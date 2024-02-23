@@ -55,6 +55,7 @@ int main(int argc, char* argv[])
     QGuiApplication::setOrganizationDomain("librumreader.com");
     QGuiApplication::setApplicationName("Librum");
     QQuickStyle::setStyle(QStringLiteral("Default"));
+    
 
     QIcon icon(":/src/logo.ico");
     app.setWindowIcon(icon);
