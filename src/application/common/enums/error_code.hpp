@@ -39,6 +39,9 @@ enum class APPLICATION_EXPORT ErrorCode
     AiExplanationLimitReached,  // 20
     AiRequestTooLong,  // 21
     UserHasNoRootFolder,  // 22
+    NameTooShort,  // 23
+    NameTooLong,  // 24
+    AutomaticLoginFailed,  // 25
 };
 
 Q_ENUM_NS(ErrorCode)

@@ -23,6 +23,11 @@ ApplicationWindow {
     property int sidebarOpenedMinWidth: 810
     property int readingPageMinWidth: 550
     property bool notifyAboutUpdates: true
+    property bool rightAlign: AppInfoController.language === "العربية"
+    property bool externalBookMode: false
+
+    // Only initalize once at the start
+    Component.onCompleted: externalBookMode = externalBook
 
     minimumHeight: 400
     minimumWidth: 650
@@ -39,6 +44,7 @@ ApplicationWindow {
         id: mainlayout
         anchors.fill: parent
         spacing: 0
+        LayoutMirroring.enabled: false
 
         MSidebar {
             id: sidebar
@@ -103,6 +109,10 @@ ApplicationWindow {
     Component {
         id: readingPage
         MReadingPage {}
+    }
+    Component {
+        id: externalReadingPage
+        MExternalReadingPage {}
     }
 
 

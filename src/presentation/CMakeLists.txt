@@ -20,6 +20,7 @@ set(translation_files
     translations/librum_it.ts
     translations/librum_ru.ts
     translations/librum_ko.ts
+    translations/librum_ar.ts
     translations/librum_zh.ts
     translations/librum_uk.ts
     translations/librum_pt.ts
@@ -49,6 +50,7 @@ target_include_directories(presentation
                 PUBLIC
                     ${CMAKE_CURRENT_SOURCE_DIR}/modules/CppElements
                     ${APPLICATION_INCLUDES}
+                    ${ADAPTERS_INCLUDES}
 )
 
 target_compile_options(presentation PRIVATE "$<$<CONFIG:DEBUG>:${LIBRUM_SANITIZERS};-Wall;-O0;-g>")

@@ -229,6 +229,9 @@ Page {
                     cellWidth: internal.bookWidth + internal.horizontalBookSpacing
                     cellHeight: internal.bookHeight + internal.verticalBookSpacing
                     rightMargin: -internal.horizontalBookSpacing
+                    layoutDirection: Qt.LeftToRight
+                    LayoutMirroring.enabled: false
+                    LayoutMirroring.childrenInherit: true
                     interactive: true
                     boundsBehavior: Flickable.StopAtBounds
                     flickDeceleration: 15000

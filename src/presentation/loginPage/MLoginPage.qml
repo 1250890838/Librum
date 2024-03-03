@@ -28,7 +28,6 @@ MFlickWrapper {
         autoLoginTimer.start()
 
         // Determine the index of the language used in the combobox
-        print("Lang: " + AppInfoController.language)
         let index = languageComboBox.getIndexByText(AppInfoController.language)
         languageComboBox.defaultIndex = index
     }
@@ -56,10 +55,14 @@ MFlickWrapper {
         id: proccessLoadingUserResult
         target: UserController
         function onFinishedLoadingUser(success) {
-            if (success)
-                loadPage(homePage, sidebar.homeItem, false)
-            else
+            if (success) {
+                if (baseRoot.externalBookMode)
+                    loadPage(externalReadingPage)
+                else
+                    loadPage(homePage, sidebar.homeItem, false)
+            } else {
                 loginFailedPopup.open()
+            }
         }
     }
 
@@ -335,7 +338,7 @@ MFlickWrapper {
         function processLoginResult(errorCode, message) {
             if (errorCode === ErrorCode.NoError) {
                 UserController.loadUser(rememberMeCheckBox.checked)
-            } else {
+            } else if (errorCode !== ErrorCode.AutomaticLoginFailed) {
                 internal.setLoginError(errorCode, message)
             }
         }

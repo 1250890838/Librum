@@ -6,6 +6,7 @@
 #include "bookmarks_model.hpp"
 #include "i_book_controller.hpp"
 #include "i_book_service.hpp"
+#include "i_library_service.hpp"
 #include "search_options.hpp"
 #include "toc/filtered_toc_model.hpp"
 
@@ -17,9 +18,10 @@ class ADAPTERS_EXPORT BookController : public IBookController
     Q_OBJECT
 
 public:
-    BookController(application::IBookService* bookService);
+    BookController(application::IBookService* bookService,
+                   application::ILibraryService* libraryService);
 
-    void setUp(QString uuid) override;
+    bool setUp(QString uuid) override;
     mupdf::FzDocument* getFzDocument() override;
 
     void search(const QString& text) override;
@@ -69,6 +71,7 @@ public:
 
 private:
     application::IBookService* m_bookService;
+    application::ILibraryService* m_libraryService;
     application::core::utils::SearchOptions m_searchOptions;
 
     std::unique_ptr<data_models::BookmarksModel> m_bookmarksModel;
