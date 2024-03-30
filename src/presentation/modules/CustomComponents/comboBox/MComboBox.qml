@@ -10,6 +10,7 @@ Item {
     property alias text: selectionPopup.selectedContent
     property bool multiSelect: false
     property string boxBackgroundColor: Style.colorContainerBackground
+    property alias allowUnselectingItems: selectionPopup.allowUnselectingItems
 
     property alias model: selectionPopup.model
 
@@ -215,11 +216,13 @@ Item {
     function setDefaultItem(itemName) {
         for (var i = 0; i < selectionPopup.model.count; i++) {
             if (selectionPopup.model.get(i)[contentPropertyName] === itemName) {
+                print("Found at index: " + i)
                 selectItem(i)
                 return
             }
         }
 
+        selectionPopup.listView.currentIndex = -1
         selectionPopup.defaultIndex = -1
     }
 
